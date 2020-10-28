@@ -7,37 +7,22 @@ extern "C" {
 
 #include "stdint.h"
 
-#define osWaitForever   0xFFFFFFFFU
-
-#define osThreadDef(name, thread, priority, instances, stacksz) \
-    const osThreadDef_t os_thread_def_##name = \
-        {#name, (thread), (priority), (instances), (stacksz)}
-
-#define osThread(name) \
-    &os_thread_def_##name
-
-#define osSemaphoreDef(name) \
-    const osSemaphoreDef_t os_semaphore_def_##name = {0}
-
-#define osSemaphore(name) \
-    &os_semaphore_def_##name
+#define osWaitForever 0xFFFFFFFFU
 
 typedef enum {
     osOK = 0
 } osStatus;
 
-typedef void (*os_pthread)(const void* argument);
-
 typedef enum {
-    osPriorityRealtime = 3
+    osPriorityRealtime = +3
 } osPriority;
 
 typedef struct {
-    const char * name;
-    os_pthread pthread;
+    char * name;
     osPriority tpriority;
     uint32_t instances;
     uint32_t stacksize;
+    void (*pthread)(const void * argument);
 } osThreadDef_t;
 
 typedef enum {
@@ -59,6 +44,20 @@ typedef struct {
 
 typedef osThread_t * osThreadId;
 typedef osSemaphore_t * osSemaphoreId;
+
+#define osThreadDef(name, thread, priority, instances, stacksz) \
+    const osThreadDef_t os_thread_def_##name = \
+    {#name, (priority), (instances), (stacksz), (thread)}
+
+#define osThread(name) \
+    &os_thread_def_##name
+
+#define osSemaphoreDef(name) \
+    const osSemaphoreDef_t os_semaphore_def_##name = \
+    {0}
+
+#define osSemaphore(name) \
+    &os_semaphore_def_##name
 
 osStatus osDelay(uint32_t millisec);
 
