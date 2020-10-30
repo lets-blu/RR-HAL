@@ -1,7 +1,7 @@
 #include "cmsis_os.h"
 
-osThread_t os_thread;
-osSemaphore_t os_semaphore;
+static osThread_t os_thread;
+static osSemaphore_t os_semaphore;
 
 osStatus osDelay(uint32_t millisec)
 {

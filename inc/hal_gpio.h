@@ -42,19 +42,6 @@ extern "C" {
 
 #define GPIO_SPEED_FREQ_LOW             0x00000002U
 
-#define IS_GPIO_ALL_INSTANCE(INSTANCE) \
-    (((INSTANCE) == GPIOA) || ((INSTANCE) == GPIOB) || ((INSTANCE) == GPIOC))
-
-#define IS_GPIO_PIN(PIN) \
-    ((((PIN) & GPIO_PIN_MASK) != 0x00U) && (((PIN) & ~GPIO_PIN_MASK) == 0x00U))
-
-#define IS_GPIO_MODE(MODE) \
-    (((MODE) == GPIO_MODE_INPUT) || \
-     ((MODE) == GPIO_MODE_OUTPUT_PP) || \
-     ((MODE) == GPIO_MODE_IT_RISING) || \
-     ((MODE) == GPIO_MODE_IT_FALLING) || \
-     ((MODE) == GPIO_MODE_IT_RISING_FALLING))
-
 typedef struct {
     uint32_t IDR;
     uint32_t ODR;
@@ -74,6 +61,19 @@ typedef enum {
 
 extern GPIO_TypeDef GPIO_BASE[];
 extern int HAL_GPIO_InitCallCount;
+
+#define IS_GPIO_ALL_INSTANCE(INSTANCE) \
+    (((INSTANCE) == GPIOA) || ((INSTANCE) == GPIOB) || ((INSTANCE) == GPIOC))
+
+#define IS_GPIO_PIN(PIN) \
+    ((((PIN) & GPIO_PIN_MASK) != 0x00U) && (((PIN) & ~GPIO_PIN_MASK) == 0x00U))
+
+#define IS_GPIO_MODE(MODE) \
+    (((MODE) == GPIO_MODE_INPUT) || \
+     ((MODE) == GPIO_MODE_OUTPUT_PP) || \
+     ((MODE) == GPIO_MODE_IT_RISING) || \
+     ((MODE) == GPIO_MODE_IT_FALLING) || \
+     ((MODE) == GPIO_MODE_IT_RISING_FALLING))
 
 void HAL_GPIO_Init(GPIO_TypeDef * GPIOx, GPIO_InitTypeDef * GPIO_Init);
 GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef * GPIOx, uint16_t GPIO_Pin);

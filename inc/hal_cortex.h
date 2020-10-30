@@ -17,6 +17,10 @@ typedef enum {
     EXTI15_10_IRQn  = 40
 } IRQn_Type;
 
+extern int HAL_NVIC_SetPriorityCallCount;
+extern int HAL_NVIC_EnableIRQCallCount;
+extern int HAL_NVIC_DisableIRQCallCount;
+
 void HAL_NVIC_SetPriority(IRQn_Type IRQn, uint32_t PreemptPriority, uint32_t SubPriority);
 void HAL_NVIC_EnableIRQ(IRQn_Type IRQn);
 void HAL_NVIC_DisableIRQ(IRQn_Type IRQn);
