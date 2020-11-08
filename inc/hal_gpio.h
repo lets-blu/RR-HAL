@@ -6,6 +6,7 @@ extern "C" {
 #endif // __cplusplus
 
 #include "stdint.h"
+#include "string.h"
 
 #define GPIOA                           (GPIO_BASE)
 #define GPIOB                           (GPIO_BASE + 1)
@@ -42,9 +43,15 @@ extern "C" {
 
 #define GPIO_SPEED_FREQ_LOW             0x00000002U
 
+#define GPIO_ARRAY_SIZE                 0x00000064U
+
 typedef struct {
     uint32_t IDR;
     uint32_t ODR;
+    int IDRIndex;
+    uint32_t IDRArray[GPIO_ARRAY_SIZE];
+    int ODRIndex;
+    uint32_t ODRArray[GPIO_ARRAY_SIZE];
 } GPIO_TypeDef;
 
 typedef struct {
@@ -61,6 +68,9 @@ typedef enum {
 
 extern GPIO_TypeDef GPIO_BASE[];
 extern int HAL_GPIO_InitCallCount;
+
+#define GPIO_RESET(INSTANCE) \
+    memset((INSTANCE), 0, sizeof(GPIO_TypeDef))
 
 #define IS_GPIO_ALL_INSTANCE(INSTANCE) \
     (((INSTANCE) == GPIOA) || ((INSTANCE) == GPIOB) || ((INSTANCE) == GPIOC))
