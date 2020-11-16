@@ -7,7 +7,7 @@ extern "C" {
 
 #include "stdint.h"
 
-#define osWaitForever 0xFFFFFFFFU
+#define osWaitForever 0xFFFFFFFF
 
 typedef enum {
     osOK = 0

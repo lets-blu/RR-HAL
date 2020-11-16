@@ -43,9 +43,10 @@ int32_t osSemaphoreWait(osSemaphoreId semaphore_id, uint32_t millisec)
     {
         return -1;
     }
-
-    semaphore_id->count--;
-    return semaphore_id->count;
+    else
+    {
+        return --semaphore_id->count;
+    }
 }
 
 osStatus osSemaphoreRelease(osSemaphoreId semaphore_id)
