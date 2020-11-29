@@ -69,7 +69,7 @@ typedef enum {
 extern GPIO_TypeDef GPIO_BASE[];
 extern int HAL_GPIO_InitCallCount;
 
-#define GPIO_RESET(INSTANCE) \
+#define RESET_GPIO(INSTANCE) \
     memset((INSTANCE), 0, sizeof(GPIO_TypeDef))
 
 #define IS_GPIO_ALL_INSTANCE(INSTANCE) \
