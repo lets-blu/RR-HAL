@@ -14,7 +14,8 @@ typedef enum {
 } osStatus;
 
 typedef enum {
-    osPriorityRealtime = +3
+    osPriorityNormal    =  0,
+    osPriorityRealtime  = +3
 } osPriority;
 
 typedef struct {
