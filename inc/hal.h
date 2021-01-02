@@ -5,7 +5,9 @@
 extern "C" {
 #endif // __cplusplus
 
-
+typedef enum {
+    HAL_OK = 0x00U
+} HAL_StatusTypeDef;
 
 #ifdef __cplusplus
 }
