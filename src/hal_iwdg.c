@@ -14,7 +14,7 @@ HAL_StatusTypeDef HAL_IWDG_Init(IWDG_HandleTypeDef * hiwdg)
 HAL_StatusTypeDef HAL_IWDG_Refresh(IWDG_HandleTypeDef * hiwdg)
 {
     (void)hiwdg;
-    HAL_IWDG_RefreshCallCount;
+    HAL_IWDG_RefreshCallCount++;
 
     return HAL_OK;
 }
