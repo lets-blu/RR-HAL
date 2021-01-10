@@ -11,7 +11,6 @@ extern "C" {
 #include "hal.h"
 
 #define IWDG                (NULL)
-
 #define IWDG_PRESCALER_64   0x00000004U
 
 typedef struct {
